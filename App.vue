@@ -12,6 +12,7 @@
 	}
 </script>
 
-<style>
-	/*每个页面公共css */
+<style lang="scss">
+@import './tuniao-ui/index.scss';
+@import './tuniao-ui/iconfont.css';
 </style>

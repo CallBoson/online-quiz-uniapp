@@ -1,0 +1,222 @@
+  @import '@/static/css/templatePage/custom_nav_bar.scss';
+  /* 悬浮 */
+  .rocket-sussuspension{
+    animation: suspension 3s ease-in-out infinite;
+  }
+  
+  @keyframes suspension {
+    0%, 100% {
+      transform: translate(0 , 0);
+    }
+    50% {
+      transform: translate(-0.8rem , 1rem);
+    }
+  }
+  
+  .login {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    
+    /* 背景图片 start */
+    &__bg {
+      z-index: -1;
+      position: fixed;
+      
+      &--top {
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        
+        .bg {
+          width: 750rpx;
+          will-change: transform;
+        }
+        .rocket {
+          margin: 50rpx 28%;
+          width: 400rpx;
+          will-change: transform;
+        }
+      }
+      
+      &--bottom {
+        bottom: -10rpx;
+        left: 0;
+        right: 0;
+        width: 100%;
+        // height: 144px;
+        // margin-bottom: env(safe-area-inset-bottom);
+        
+        image {
+          width: 750rpx;
+          will-change: transform;
+        }
+      }
+    }
+    /* 背景图片 end */
+    
+    /* 内容 start */
+    &__wrapper {
+      margin-top: 403rpx;
+      width: 100%;
+    }
+    
+    /* 切换 start */
+    &__mode {
+      position: relative;
+      margin: 0 auto;
+      width: 476rpx;
+      height: 77rpx;
+      background-color: #FFFFFF;
+      box-shadow: 0rpx 10rpx 50rpx 0rpx rgba(0, 3, 72, 0.1);
+      border-radius: 39rpx;
+      
+      &__item {
+        height: 77rpx;
+        width: 100%;
+        line-height: 77rpx;
+        text-align: center;
+        font-size: 31rpx;
+        color: #908f8f;
+        letter-spacing: 1em;
+        text-indent: 1em;
+        z-index: 2;
+        transition: all 0.4s;
+        
+        &--active {
+          font-weight: bold;
+          color: #FFFFFF;
+        }
+      }
+      
+      &__slider {
+        position: absolute;
+        height: inherit;
+        width: calc(476rpx / 2);
+        border-radius: inherit;
+        box-shadow: 0rpx 18rpx 72rpx 18rpx rgba(0, 195, 255, 0.1);
+        z-index: 1;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+    }
+    /* 切换 end */
+    
+    /* 登录注册信息 start */
+    &__info {
+      margin: 0 30rpx;
+      margin-top: 105rpx;
+      padding: 30rpx 51rpx;
+      padding-bottom: 0;
+      border-radius: 20rpx;
+      background-color: #ffff;
+      box-shadow: 0rpx 10rpx 50rpx 0rpx rgba(0, 3, 72, 0.1);
+      
+      &__item {
+        
+        &__input {
+          margin-top: 59rpx;
+          width: 100%;
+          height: 77rpx;
+          border: 1rpx solid #E6E6E6;
+          border-radius: 39rpx;
+          
+          &__left-icon {
+            width: 10%;
+            font-size: 44rpx;
+            margin-left: 20rpx;
+            color: #AAAAAA;
+          }
+          
+          &__content {
+            width: 80%;
+            padding-left: 10rpx;
+            
+            &--verify-code {
+              width: 56%;
+            }
+            
+            input {
+              font-size: 24rpx;
+              // letter-spacing: 0.1em;
+            }
+          }
+          
+          &__right-icon {
+            width: 10%;
+            font-size: 44rpx;
+            margin-right: 20rpx;
+            color: #AAAAAA;
+          }
+          
+          &__right-verify-code {
+            width: 34%;
+            margin-right: 20rpx;
+          }
+        }
+        
+        &__button {
+          margin-top: 75rpx;
+          margin-bottom: 39rpx;
+          width: 100%;
+          height: 77rpx;
+          text-align: center;
+          font-size: 31rpx;
+          font-weight: bold;
+          line-height: 77rpx;
+          letter-spacing: 1em;
+          text-indent: 1em;
+          border-radius: 39rpx;
+          box-shadow: 1rpx 10rpx 24rpx 0rpx rgba(60, 129, 254, 0.35);
+        }
+        
+        &__tips {
+          margin: 30rpx 0;
+          color: #AAAAAA;
+        }
+      }
+    }
+    /* 登录注册信息 end */
+    
+    /* 登录方式切换 start */
+    &__way {
+      margin: 0 auto;
+      margin-top: 110rpx;
+      
+      &__item {
+        &--icon {
+          width: 77rpx;
+          height: 77rpx;
+          font-size: 50rpx;
+          border-radius: 100rpx;
+          margin-bottom: 18rpx;
+          position: relative;
+          z-index: 1;
+          
+          &::after {
+            content: " ";
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            border-radius: inherit;
+            opacity: 1;
+            transform: scale(1, 1);
+            background-size: 100% 100%;
+            background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg5.png);
+          }
+        }
+      }
+    }
+    /* 登录方式切换 end */
+    /* 内容 end */
+    
+  }
+  
+  /deep/.input-placeholder {
+    font-size: 24rpx;
+    color: #E6E6E6;
+  }
+  
