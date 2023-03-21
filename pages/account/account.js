@@ -1,12 +1,21 @@
 import template_page_mixin from '@/libs/mixin/template_page_mixin.js'
 import NavIndexButton from '@/libs/components/nav-index-button.vue'
+import { mapState } from 'vuex'
 export default {
 	mixins: [template_page_mixin],
 	components: {
 		NavIndexButton
 	},
 	data() {
-		return {}
+		return {
+			
+		}
+	},
+	computed: {
+		...mapState({
+			username: state => state.user.username,
+			avatar: state => state.user.avatar,
+		})
 	},
 	methods: {
 		toLogin() {

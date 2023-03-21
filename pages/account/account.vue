@@ -1,14 +1,5 @@
 <template>
   <view class="template-about tn-safe-area-inset-bottom">
-    <!-- 顶部自定义导航 -->
-    <!-- <tn-nav-bar fixed alpha customBack>
-      <view slot="back" class='tn-custom-nav-bar__back'
-        @click="goBack">
-        <text class='icon tn-icon-left'></text>
-        <text class='icon tn-icon-home-capsule-fill'></text>
-      </view>
-    </tn-nav-bar> -->
-
     <view class="top-backgroup">
       <image src='https://tnuiimage.tnkjapp.com/swiper/summer.jpg' mode='widthFix' class='backgroud-image'></image>
     </view>
@@ -27,13 +18,15 @@
     
     <view class="about__wrap">
       <!-- 头像用户信息 -->
-      <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
+      <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center" @click="toLogin">
         <view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center">
-          <view class="tn-shadow-blur" style="background-image:url('https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg');width: 170rpx;height: 170rpx;background-size: cover;">
+          <view class="tn-shadow-blur"
+				  style="width: 170rpx;height: 170rpx;background-size: cover;"
+				  :style="{ backgroundImage: `url(${avatar || 'https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg'})` }">
           </view>
           <!-- <view class="tn-icon-logo-tuniao" style="font-size: 140rpx;color: #01BEFF;"></view> -->
         </view>
-        <view class="user-info__nick-name">图鸟科技</view>
+        <view class="user-info__nick-name">{{ username || '未登录' }}</view>
       </view>
       
 
