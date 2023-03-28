@@ -78,7 +78,7 @@
             <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-5 tn-color-white" > 
               <view class="tn-icon-logo-tuniao"></view>
             </view>
-            <view class="tn-margin-left-sm tn-flex-1">关于图鸟</view>
+            <view class="tn-margin-left-sm tn-flex-1" @click="toMyQuestionBank">我的题库</view>
             <view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
           </view>
         </tn-list-cell>

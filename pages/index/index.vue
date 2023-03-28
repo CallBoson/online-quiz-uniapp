@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import index from './index.js'
+import index from './indexJs.js'
 export default index
 </script>
 

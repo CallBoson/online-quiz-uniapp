@@ -1,0 +1,66 @@
+.container {
+    padding-top: 100rpx;
+}
+
+.search-wrap {
+    height: 60rpx;
+    padding: 0 30rpx;
+    background-color: #f0f0f0;
+    border-radius: 32rpx;
+    font-size: 28rpx;
+    margin: 20rpx 0;
+    text-align: center;
+}
+
+.content-wrap {
+    padding: 0 30rpx;
+    background-color: #FFF;
+    box-sizing: border-box;
+}
+
+.question-bank-list {
+    .question-bank-item {
+        display: flex;
+        padding: 30rpx 0;
+
+        .cover-wrap {
+            width: 240rpx;
+            height: 140rpx;
+            margin-right: 20rpx;
+            background-color: rgb(183, 220, 255);
+            border-radius: 16rpx;
+            color: #FFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+
+            .name {
+                font-size: 32rpx;
+                color: #222;
+            }
+
+            .bottom-wrap {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                .count {
+                    font-size: 26rpx;
+                    color: #918e8e;
+                }
+    
+                .more {
+                    font-size: 26rpx;
+                    color: #918e8e;
+                }
+            }
+        }
+    }
+}

@@ -22,6 +22,11 @@ export default {
 			uni.navigateTo({
 				url: '/pages/login/login'
 			})
+		},
+		toMyQuestionBank() {
+			uni.navigateTo({
+				url: '/pages/my_question_bank/my_question_bank'
+			})
 		}
 	}
 }
