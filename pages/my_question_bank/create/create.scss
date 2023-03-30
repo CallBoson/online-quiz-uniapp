@@ -1,0 +1,40 @@
+page {
+	background-color: #F5F5F5;
+}
+.cover-wrap {
+    position: relative;
+	width: 100%;
+	height: 350rpx;
+    line-height: 350rpx;
+    background-color: rgb(183, 220, 255);
+    color: #FFF;
+    text-align: center;
+    font-size: 62rpx;
+	.cover-image {
+		width: 100%;
+		height: 100%;
+	}
+
+    .change-cover-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 24rpx;
+        background-color: rgba(0,0,0,.5);
+        width: 200rpx;
+        height: 50rpx;
+        line-height: 50rpx;
+        border-radius: 28rpx;
+        color: #FFF;
+    }
+}
+
+.btn-wrap {
+	display: flex;
+	justify-content: center;
+	margin-top: 30rpx;
+	.save-btn {
+		background-image: repeating-linear-gradient(45deg,#00c3ff,#58fff5);
+		color: #fff;
+	}
+}

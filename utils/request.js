@@ -1,4 +1,6 @@
-const base_url = "http://127.0.0.1:3000"
+import config from "./config"
+
+const base_url = config.API_PREFIX
 
 class Request {
 	post(url, data) {

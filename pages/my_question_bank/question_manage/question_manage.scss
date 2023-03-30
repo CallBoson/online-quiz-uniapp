@@ -1,0 +1,44 @@
+page {
+    background-color: #f5f5f5;
+}
+
+.header-wrap {
+    background-color: #FFF;
+    padding: 30rpx;
+
+    .question-bank-name {
+        color: #222;
+        font-size: 38rpx;
+        margin-bottom: 20rpx;
+    }
+
+    .info-wrap {
+        display: flex;
+
+        .owner {
+            color: #999;
+            font-size: 28rpx;
+            margin-right: 40rpx;
+
+            .owner-name {
+                color: #5fa3fb;
+                font-size: 28rpx;
+            }
+        }
+
+        .question-count {
+            color: #999;
+            font-size: 28rpx;
+        }
+    }
+
+    .search-wrap {
+        height: 60rpx;
+        padding: 0 30rpx;
+        background-color: #f0f0f0;
+        border-radius: 32rpx;
+        font-size: 28rpx;
+        margin: 20rpx 0;
+        text-align: center;
+    }
+}

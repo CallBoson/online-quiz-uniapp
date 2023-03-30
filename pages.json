@@ -14,6 +14,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "账号设置",
+				"navigationStyle": "custom",
                 "enablePullDownRefresh": false
             }
             
@@ -23,6 +24,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "navigationStyle": "custom",
                 "enablePullDownRefresh": false
             }
             
@@ -36,10 +38,30 @@
             }
             
         }
+        ,{
+            "path" : "pages/my_question_bank/create/create",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新建题库",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my_question_bank/question_manage/question_manage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "题目管理",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
-		"navigationStyle": "custom",
+		"navigationStyle": "default",
+		"navigationBarBackgroundColor": "#FFF",
 		"navigationBarTextStyle": "black",
+		"backgroundColor": "#F5F5F5",
 		"navigationBarTitleText": "在线答题"
 	},
 	"tabBar": {
