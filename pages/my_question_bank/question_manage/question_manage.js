@@ -2,6 +2,7 @@ let originQuestions = []
 export default {
     data() {
         return {
+            question_bank_id: '', // 题库id
             question_bank_name: '', // 题库名称
             owner_info: {}, // 题库创建者信息
             questions: [], // 题目列表
@@ -19,14 +20,17 @@ export default {
     },
     onLoad(options) {
         if (options?.id) {
-            this.getDetail(options.id)
+            this.question_bank_id = options.id
+            this.getDetail()
+            uni.$on('fetchData', () => {
+                this.getDetail()
+            })
         }
     },
     methods: {
         // 获取题库详情
-        getDetail(id) {
-            uni.post('/questionBank/questionManage', { id }).then(res => {
-                console.log(res)
+        getDetail() {
+            uni.post('/questionBank/questionManage', { id: this.question_bank_id }).then(res => {
                 this.question_bank_name = res.data.question_bank_name
                 this.owner_info = res.data.owner
                 // 题目列表
@@ -102,6 +106,21 @@ export default {
             } else {
                 return ''
             }
+        },
+        // 操作菜单
+        showMore() {
+            uni.showActionSheet({
+                itemList: ['从题库选题', '手动录入'],
+                success: (res) => {
+                    if (res.tapIndex === 0) {
+                        
+                    } else if (res.tapIndex === 1) {
+                        uni.navigateTo({
+                            url: '/pages/my_question_bank/create_question/create_question?id=' + this.question_bank_id
+                        })
+                    }
+                }
+            })
         }
     },
     filters: {

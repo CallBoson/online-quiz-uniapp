@@ -1,0 +1,186 @@
+page {
+    background-color: #f5f5f5;
+    padding: 30rpx;
+    padding-bottom: 120rpx;
+}
+
+.container {
+    .card {
+        background-color: #fff;
+        padding: 30rpx;
+        border-radius: 20rpx;
+        margin-bottom: 20rpx;
+        color: #222;
+        font-size: 32rpx;
+    }
+
+    .save-btn {
+        position: fixed;
+        bottom: 30rpx;
+        width: 690rpx;
+        height: 80rpx;
+        line-height: 80rpx;
+        text-align: center;
+        background-color: #5fa3fb;
+        border-radius: 20rpx;
+        color: #FFF;
+        font-size: 34rpx;
+    }
+}
+
+.question-wrap {
+    .type-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2rpx solid #eee;
+        padding-bottom: 25rpx;
+
+        .tn-icon-right {
+            font-size: 32rpx;
+            font-weight: bold;
+            margin-left: 10rpx;
+            color: grey;
+        }
+    }
+
+    .question-title-wrap {
+        margin-top: 30rpx;
+
+        textarea {
+            margin-top: 20rpx;
+            padding: 10rpx;
+        }
+    }
+}
+
+.options-wrap {
+    .list-wrap {
+        margin-top: 50rpx;
+        .list-item {
+            display: flex;
+            margin-bottom: 30rpx;
+
+            .tn-icon-reduce-circle-fill {
+                color: rgb(255, 111, 112);
+                font-size: 45rpx;
+            }
+
+            .input-wrap {
+                display: flex;
+                align-items: center;
+                padding-bottom: 30rpx;
+                border-bottom: 2rpx solid #eee;
+                flex-grow: 1;
+                margin: 0 20rpx;
+
+                .prefix-index {
+                    margin-right: 20rpx;
+                }
+
+                input {
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+
+    /* 填空 */
+    .fill-list-wrap {
+        margin-top: 50rpx;
+        .list-item {
+            background-color: #f1f1f1bd;
+            margin-bottom: 30rpx;
+            padding: 30rpx;
+            border-radius: 10rpx;
+
+            .close-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 15rpx;
+
+                .text {
+                    font-size: 30rpx;
+
+                    .small-text {
+                        font-size: 26rpx;
+                        color: #999;
+                        margin-left: 10rpx;
+                    }
+                }
+
+                .tn-icon-close-fill {
+                    color: rgb(173, 172, 172);
+                    font-size: 38rpx;
+                }
+            }
+
+            .input-wrap {
+                display: flex;
+                align-items: center;
+                padding: 20rpx 0;
+                border-bottom: 1rpx solid #dfdede;
+                flex-grow: 1;
+
+                .tn-icon-reduce-circle-fill {
+                    color: rgb(255, 111, 112);
+                    font-size: 45rpx;
+                }
+
+                input {
+                    flex-grow: 1;
+                    margin-left: 30rpx;
+                }
+            }
+
+            .add-answer-wrap {
+                display: flex;
+                align-items: center;
+                margin-top: 20rpx;
+                color: #5fa3fb;
+
+                .tn-icon-add-fill {
+                    font-size: 45rpx;
+                    margin-right: 20rpx;
+                }
+
+                .text {
+                    font-size: 30rpx;
+                }
+            }
+        }
+    }
+
+    .add-fill-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f1f1f1bd;
+        color: #5fa3fb;
+        padding: 20rpx 0;
+        border-radius: 12rpx;
+
+        .tn-icon-add-circle {
+            font-size: 42rpx;
+            margin-right: 15rpx;
+        }
+    }
+
+    .add-option {
+        color: #5fa3fb;
+        display: flex;
+        align-items: center;
+        
+        .tn-icon-add-fill {
+            font-size: 45rpx;
+            margin-right: 20rpx;
+        }
+    }
+}
+
+.analysis-wrap {
+    .title {
+        margin-bottom: 30rpx;
+    }
+}

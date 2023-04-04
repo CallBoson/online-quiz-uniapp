@@ -59,7 +59,7 @@
 		<view class="bottom-wrap">
 			<view class="btn-wrap">
 				<!-- <tn-button width="320rpx" height="80rpx" :fontSize="32">批量整理</tn-button> -->
-				<tn-button width="500rpx" height="80rpx" :fontSize="32" backgroundColor="#5fa3fb" fontColor="#FFF">添加题目</tn-button>
+				<tn-button @click="showMore" width="500rpx" height="80rpx" :fontSize="32" backgroundColor="#5fa3fb" fontColor="#FFF">添加题目</tn-button>
 			</view>
 		</view>
 

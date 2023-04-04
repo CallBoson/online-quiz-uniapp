@@ -56,6 +56,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/my_question_bank/create_question/create_question",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新建题目",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "default",
