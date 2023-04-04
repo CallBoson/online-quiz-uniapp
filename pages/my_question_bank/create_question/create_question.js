@@ -1,6 +1,8 @@
 export default {
     data() {
         return {
+            mode: 'create', // create:创建题目 edit:编辑题目
+            edit_id: '', // 编辑题目id
             question_bank_id: '', // 题库id
             question: { content: '' }, // 题干
             typeArray: ['单选题', '多选题', '判断题', '填空题', '简答题'],
@@ -15,6 +17,40 @@ export default {
     onLoad(options) {
         if (options?.id) {
             this.question_bank_id = options.id
+        }
+        if (options?.mode === 'edit') {
+            this.mode = 'edit'
+            uni.setNavigationBarTitle({
+                title: '编辑题目'
+            })
+            const param = this.$store.getters.longParam
+            this.edit_id = param.id
+            this.currentQuestionType = param.type
+            if (param.question) {
+                this.question = param.question
+            }
+            if (param.answer_single) {
+                this.options_single = param.answer_single.map(v => {
+                    v.isAnswer = !!v.isAnswer
+                    return v
+                })
+            }
+            if (param.answer_multiple) {
+                this.options_multiple = param.answer_multiple.map(v => {
+                    v.isAnswer = !!v.isAnswer
+                    return v
+                })
+            }
+            if (param.answer_judge) {
+                param.answer_judge.answer = !!param.answer_judge.answer
+                this.options_judge = param.answer_judge
+            }
+            if (param.answer_fill) {
+                this.options_fill = param.answer_fill
+            }
+            if (param.analysis) {
+                this.analysis = param.analysis
+            }
         }
     },
     methods: {
@@ -130,7 +166,7 @@ export default {
         save() {
             uni.showLoading()
             const data = {
-                id: this.question_bank_id,
+                id: this.mode === 'edit' ? this.edit_id : this.question_bank_id,
                 type: this.currentQuestionType,
                 question: this.question,
                 answer: undefined,
@@ -139,15 +175,19 @@ export default {
             // 把选项转换成后端需要的格式
             if (this.currentQuestionType === 1) {
                 // 单选题
-                data.answer = this.options_single.map(item => {
-                    item.isAnswer = item.isAnswer ? 1 : 0
-                    return item
+                data.answer = Array.from(this.options_single, item => {
+                    const obj = {}
+                    obj.content = item.content
+                    obj.isAnswer = item.isAnswer ? 1 : 0
+                    return obj
                 })
             } else if (this.currentQuestionType === 2) {
                 // 多选题
-                data.answer = this.options_multiple.map(item => {
-                    item.isAnswer = item.isAnswer ? 1 : 0
-                    return item
+                data.answer = Array.from(this.options_multiple, item => {
+                    const obj = {}
+                    obj.content = item.content
+                    obj.isAnswer = item.isAnswer ? 1 : 0
+                    return obj
                 })
             } else if (this.currentQuestionType === 3) {
                 // 判断题
@@ -158,7 +198,7 @@ export default {
                 data.answer = this.options_fill
             }
 
-            uni.post('/questionBank/createQuestion', data).then(() => {
+            uni.post(`/questionBank/${this.mode === 'edit' ? 'edit' : 'create'}Question`, data).then(() => {
                 uni.hideLoading()
                 uni.$emit('fetchData')
                 uni.navigateBack()

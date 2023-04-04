@@ -29,8 +29,8 @@
 					<view class="question-info-wrap">
 						<view class="question-type">{{ item.type | questionTypeFilter }}</view>
 						<view class="icons-wrap">
-							<text class="tn-icon-edit"></text>
-							<text class="tn-icon-delete"></text>
+							<text class="tn-icon-edit" @click="editQuestion(item)"></text>
+							<text class="tn-icon-delete" @click="deleteQuestion(item)"></text>
 						</view>
 					</view>
 					<!-- 题目 -->

@@ -121,6 +121,32 @@ export default {
                     }
                 }
             })
+        },
+        // 编辑题目
+        editQuestion(item) {
+            this.$store.commit('setLongParam', item)
+            uni.navigateTo({
+                url: '/pages/my_question_bank/create_question/create_question?mode=edit'
+            })
+        },
+        // 删除题目
+        deleteQuestion(item) {
+            uni.showModal({
+                title: '提示',
+                content: '确定要删除该题目吗？',
+                success: (res) => {
+                    if (res.confirm) {
+                        uni.post('/questionBank/deleteQuestion', { id: item.id }).then(res => {
+                            uni.showToast({
+                                title: '删除成功',
+                                icon: 'success',
+                                duration: 2000
+                            })
+                            this.getDetail()
+                        })
+                    }
+                }
+            })
         }
     },
     filters: {

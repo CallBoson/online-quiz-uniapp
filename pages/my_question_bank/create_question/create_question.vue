@@ -10,7 +10,7 @@
 			</view>
 			<view class="question-title-wrap">
 				<view class="title">题目</view>
-				<textarea cols="30" rows="10" placeholder="点击输入题目内容" @input="input_question"></textarea>
+				<textarea cols="30" rows="10" placeholder="点击输入题目内容" :value="question.content" @input="input_question"></textarea>
 			</view>
 		</view>
 		<view v-if="currentQuestionType !== 5" class="card options-wrap">
@@ -23,7 +23,7 @@
 							<text class="tn-icon-reduce-circle-fill" @click="removeOption(index)"></text>
 							<view class="input-wrap">
 								<view class="prefix-index">{{ String.fromCharCode(65 + index) }}.</view>
-								<input type="text" @input="input_single" :data-index="index" :placeholder="`请输入选项 ${index+1}`">
+								<input type="text" :value="options_single[index].content" @input="input_single" :data-index="index" :placeholder="`请输入选项 ${index+1}`">
 							</view>
 							<radio :value="String(index)" :checked="item.isAnswer" />
 						</view>
@@ -43,7 +43,7 @@
 							<text class="tn-icon-reduce-circle-fill" @click="removeOption(index)"></text>
 							<view class="input-wrap">
 								<view class="prefix-index">{{ String.fromCharCode(65 + index) }}.</view>
-								<input type="text" @input="input_multiple" :data-index="index" :placeholder="`请输入选项 ${index+1}`">
+								<input type="text" :value="options_multiple[index].content" @input="input_multiple" :data-index="index" :placeholder="`请输入选项 ${index+1}`">
 							</view>
 							<checkbox :value="String(index)" :checked="item.isAnswer" />
 						</view>
@@ -92,7 +92,7 @@
 						</view>
 						<view class="input-wrap" v-for="(answer,aindex) in fill">
 							<text class="tn-icon-reduce-circle-fill" @click="removeFillAnswer(findex,aindex)"></text>
-							<input @input="input_fill" :data-index="findex" :data-i="aindex" type="text" :placeholder="`请输入参考答案${aindex + 1}`">
+							<input :value="options_fill[findex][aindex]" @input="input_fill" :data-index="findex" :data-i="aindex" type="text" :placeholder="`请输入参考答案${aindex + 1}`">
 						</view>
 						<view class="add-answer-wrap" @click="addFillAnswer(findex)">
 							<text class="tn-icon-add-fill"></text>
@@ -108,7 +108,7 @@
 		</view>
 		<view class="card analysis-wrap">
 			<view class="title">解析</view>
-			<textarea cols="30" rows="10" placeholder="点击输入答案解析内容" @input="input_analysis"></textarea>
+			<textarea cols="30" rows="10" placeholder="点击输入答案解析内容" :value="analysis.content" @input="input_analysis"></textarea>
 		</view>
 		<button class="save-btn" @click="save">保存</button>
 	</view>
