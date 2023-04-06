@@ -25,6 +25,10 @@
     <view class="tn-margin-top" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
       <tn-swiper :list="banner" :height="350" :effect3d="true" mode="round"></tn-swiper>
     </view>
+
+    <view class="create-btn">
+      <button>创建答题</button>
+    </view>
     
     <!-- 数据信息 -->
     <view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-flex-row-between tn-margin">

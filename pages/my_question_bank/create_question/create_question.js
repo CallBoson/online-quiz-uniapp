@@ -42,8 +42,7 @@ export default {
                 })
             }
             if (param.answer_judge) {
-                param.answer_judge.answer = !!param.answer_judge.answer
-                this.options_judge = param.answer_judge
+                this.options_judge = { answer: !!param.answer_judge }
             }
             if (param.answer_fill) {
                 this.options_fill = param.answer_fill
@@ -191,8 +190,9 @@ export default {
                 })
             } else if (this.currentQuestionType === 3) {
                 // 判断题
-                this.options_judge.answer = this.options_judge.answer ? 1 : 0
-                data.answer = this.options_judge
+                const obj = Object.assign({}, this.options_judge)
+                obj.answer = obj.answer ? 1 : 0
+                data.answer = obj
             } else if (this.currentQuestionType === 4) {
                 // 填空题
                 data.answer = this.options_fill

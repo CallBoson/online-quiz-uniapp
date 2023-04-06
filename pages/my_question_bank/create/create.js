@@ -6,7 +6,7 @@ export default {
 				cover: '',
 				name: '',
 				tagIds: [],
-				is_private: "1"
+				is_private: '0'
 			},
 			tags: [],
             currentEditId: undefined

@@ -65,6 +65,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/quiz/create/create",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "default",
