@@ -27,7 +27,7 @@
     </view>
 
     <view class="create-btn">
-      <button>创建答题</button>
+      <button @click="toCreateQuiz">创建答题</button>
     </view>
     
     <!-- 数据信息 -->

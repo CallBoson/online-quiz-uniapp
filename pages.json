@@ -69,7 +69,34 @@
             "path" : "pages/quiz/create/create",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "创建答题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/group/index/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "团队",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/quiz/select_from_bank/select_from_bank",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "从题库选择",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/profile/profile",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "编辑个人信息",
                 "enablePullDownRefresh": false
             }
             
@@ -92,6 +119,11 @@
 			"selectedIconPath": "static/tabbar-main.png",
 			"iconPath": "static/tabbar-main.png",
 			"text": "首页"
+		}, {
+			"pagePath": "pages/group/index/index",
+			"iconPath": "static/tabbar-group.png",
+			"selectedIconPath": "static/tabbar-group.png",
+			"text": "团队"
 		}, {
 			"pagePath": "pages/account/account",
 			"iconPath": "static/tabbar-account.png",

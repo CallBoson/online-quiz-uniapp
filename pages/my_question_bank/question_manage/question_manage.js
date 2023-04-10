@@ -2,6 +2,7 @@ let originQuestions = []
 export default {
     data() {
         return {
+            mode: 'manage', // select: 选择题目，manage: 题目管理
             question_bank_id: '', // 题库id
             question_bank_name: '', // 题库名称
             owner_info: {}, // 题库创建者信息
@@ -16,15 +17,53 @@ export default {
             ], // 题目类型列表
             currentSelectType: undefined, // 当前选择的题目类型
             isShowDetail: false, // 是否显示题目详情
+            mode_select_data: {
+                isSelectAll: false, // 是否全选
+            }
         }
     },
     onLoad(options) {
+        if (options?.mode) {
+            this.mode = options.mode
+        }
+
+        // 题目模式下的从题库选题完毕事件
+        if (options?.mode !== 'select') {
+            uni.$on('selectedQuestions', (questions) => {
+                // 批量创建题目
+                uni.post('/question/create/batch', {
+                    id: this.question_bank_id,
+                    questionList: questions.map(q => {
+                        const answer = q.type == 1 ? q.answer_single : q.type == 2 ? q.answer_multiple : q.type == 3 ? { answer: q.answer_judge } : q.type == 4 ? q.answer_fill : null
+                        return {
+                            type: q.type,
+                            question: q.question,
+                            analysis: q.analysis,
+                            answer
+                        }
+                    })
+                }).then(() => {
+                    this.getDetail()
+                })
+            })
+        }
+
         if (options?.id) {
             this.question_bank_id = options.id
             this.getDetail()
             uni.$on('fetchData', () => {
                 this.getDetail()
             })
+        }
+    },
+    onUnload() {
+        uni.$off('fetchData')
+        uni.$off('selectedQuestions')
+    },
+    computed: {
+        // 选择模式下的选中题目数量
+        modeSelectCount() {
+            return this.questions.filter(item => item.isSelect).length
         }
     },
     methods: {
@@ -53,6 +92,12 @@ export default {
                     if (item.analysis) {
                         item.analysis = JSON.parse(item.analysis)
                     }
+
+                    // 选择模式下的题目选择状态
+                    if (this.mode === 'select') {
+                        item.isSelect = false
+                    }
+
                     return item
                 })
                 originQuestions = this.questions
@@ -96,7 +141,7 @@ export default {
                     return obj.content
                 }).join('；')
             } else if (type === '3') {
-                return item.answer_judge ? '正确' : '错误'
+                return item.answer_judge.answer ? '正确' : '错误'
             } else if (type === '4') {
                 let text = '\n'
                 for (let i = 0; i < item.answer_fill.length; i++) {
@@ -113,7 +158,9 @@ export default {
                 itemList: ['从题库选题', '手动录入'],
                 success: (res) => {
                     if (res.tapIndex === 0) {
-                        
+                        uni.navigateTo({
+                            url: '/pages/quiz/select_from_bank/select_from_bank'
+                        })
                     } else if (res.tapIndex === 1) {
                         uni.navigateTo({
                             url: '/pages/my_question_bank/create_question/create_question?id=' + this.question_bank_id
@@ -136,16 +183,45 @@ export default {
                 content: '确定要删除该题目吗？',
                 success: (res) => {
                     if (res.confirm) {
-                        uni.post('/questionBank/deleteQuestion', { id: item.id }).then(res => {
+                        uni.post('/question/delete', { id: item.id }).then(res => {
                             uni.showToast({
                                 title: '删除成功',
                                 icon: 'success',
                                 duration: 2000
                             })
-                            this.getDetail()
+                            uni.$emit('fetchData')
                         })
                     }
                 }
+            })
+        },
+        // 选择模式下的点击全选选择框
+        modeSelectCheck (e) {
+            this.questions.forEach(item => {
+                item.isSelect = e.value
+            })
+        },
+        // 选择模式下的点击题目
+        modeSelectClickQuestion (index) {
+            if (this.mode !== 'select') {
+                return
+            }
+            this.questions[index].isSelect = !this.questions[index].isSelect
+        },
+        // 选择模式下的添加到答题
+        modeSelectAdd () {
+            const selectedQuestions = this.questions.filter(item => item.isSelect)
+            if (selectedQuestions.length === 0) {
+                uni.showToast({
+                    title: '请选择题目',
+                    icon: 'none',
+                })
+                return
+            }
+            uni.$emit('selectedQuestions', selectedQuestions)
+            // 返回上两级页面
+            uni.navigateBack({
+                delta: 2
             })
         }
     },

@@ -4,8 +4,12 @@ import TuniaoUI from 'tuniao-ui'
 import store from './store'
 import request from './utils/request.js'
 import upload from './utils/upload.js'
-uni.post = request.post
-uni.uploadImage = upload.uploadImage
+import util from './utils/util.js'
+
+uni.post = request.post // 封装uni.request
+uni.uploadImage = upload.uploadImage // 封装uni.uploadFile
+uni.$util = util // 封装uni.$util
+
 let vuexStore = require('@/store/$tn.mixin.js')
 Vue.mixin(vuexStore)
 Vue.use(TuniaoUI)

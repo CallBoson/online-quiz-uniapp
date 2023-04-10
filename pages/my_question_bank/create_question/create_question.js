@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            mode: 'create', // create:创建题目 edit:编辑题目
+            mode: 'create', // create:创建题目 edit:编辑题目 manual:手动添加题目
             edit_id: '', // 编辑题目id
             question_bank_id: '', // 题库id
             question: { content: '' }, // 题干
@@ -18,8 +18,12 @@ export default {
         if (options?.id) {
             this.question_bank_id = options.id
         }
+
+        if (options?.mode) {
+            this.mode = options.mode
+        }
+
         if (options?.mode === 'edit') {
-            this.mode = 'edit'
             uni.setNavigationBarTitle({
                 title: '编辑题目'
             })
@@ -42,7 +46,7 @@ export default {
                 })
             }
             if (param.answer_judge) {
-                this.options_judge = { answer: !!param.answer_judge }
+                this.options_judge = param.answer_judge
             }
             if (param.answer_fill) {
                 this.options_fill = param.answer_fill
@@ -128,7 +132,7 @@ export default {
         },
         // 点击判断题选项
         change_judge(e) {
-            this.options_judge.answer = e.detail.value === '1' ? true : false
+            this.options_judge.answer = !!(parseInt(e.detail.value))
         },
         // 添加填空题参考答案
         addFillAnswer(index) {
@@ -161,8 +165,91 @@ export default {
         input_analysis(e) {
             this.analysis.content = e.detail.value
         },
+        // 表单验证
+        validateForm() {
+            const error = (title) => {
+                uni.showToast({
+                    title,
+                    icon: 'none'
+                })
+                throw new Error(title)
+            }
+            // 题目内容
+            const questionContent = this.question.content
+            if (!questionContent) {
+                error('题目不能为空')
+            } else if (questionContent.length > 1000) {
+                error('题目长度不能超过1000')
+            }
+
+            // 题目类型
+            const type = parseInt(this.currentQuestionType)
+            if (![1, 2, 3, 4, 5].includes(type)) {
+                error('题目类型错误')
+            }
+
+            // 题目答案
+            let answer
+            if (type === 1) {
+                // 单选题
+                answer = this.options_single
+                if (!(answer instanceof Array)) {
+                    error('单选题参数应为数组')
+                }
+                if (answer.length <= 1) {
+                    error('单选题至少需要两个选项')
+                }
+                if (answer.some(item => (!item?.content) || item.content.trim().length > 100)) {
+                    error('单选题选项长度为1~100')
+                }
+                if (answer.filter(item => item?.isAnswer).length !== 1) {
+                    error('单选题有且只有一个正确答案')
+                }
+            } else if (type === 2) {
+                // 多选题
+                answer = this.options_multiple
+                if (!(answer instanceof Array)) {
+                    error('多选题参数应为数组')
+                }
+                if (answer.length <= 1) {
+                    error('多选题至少需要两个选项')
+                }
+                if (answer.some(item => (!item?.content) || item.content.trim().length > 100)) {
+                    error('多选题选项长度为1~100')
+                }
+                if (answer.filter(item => item?.isAnswer).length < 1) {
+                    error('多选题至少有一个正确答案')
+                }
+            } else if (type === 4) {
+                // 填空题
+                answer = this.options_fill
+                if (!(answer instanceof Array)) {
+                    error('填空题参数应为数组')
+                }
+                if (answer.length < 1) {
+                    error('填空题至少需要一个参考答案')
+                }
+                if (answer.some(item => !(item instanceof Array) || item.length < 1)) {
+                    error('填空题参考答案应为数组且至少有一个答案')
+                }
+                if (answer.some(item => item.some(answer => !answer || answer.trim().length > 50))) {
+                    error('填空题参考答案长度为1~50')
+                }
+            }
+
+            return true
+        },
         // 保存
         save() {
+            if (!this.validateForm()) {
+                return
+            }
+
+            if (this.mode === 'manual') {
+                this.manualAdd()
+                return
+            }
+
             uni.showLoading()
             const data = {
                 id: this.mode === 'edit' ? this.edit_id : this.question_bank_id,
@@ -190,20 +277,30 @@ export default {
                 })
             } else if (this.currentQuestionType === 3) {
                 // 判断题
-                const obj = Object.assign({}, this.options_judge)
-                obj.answer = obj.answer ? 1 : 0
-                data.answer = obj
+                data.answer = this.options_judge
             } else if (this.currentQuestionType === 4) {
                 // 填空题
                 data.answer = this.options_fill
             }
 
-            uni.post(`/questionBank/${this.mode === 'edit' ? 'edit' : 'create'}Question`, data).then(() => {
+            uni.post(`/question/${this.mode === 'edit' ? 'edit' : 'create'}`, data).then(() => {
                 uni.hideLoading()
                 uni.$emit('fetchData')
                 uni.navigateBack()
             })
+        },
+        // 手动添加题目
+        manualAdd() {
+            uni.$emit('manualAdded', {
+                question: this.question,
+                type: this.currentQuestionType,
+                answer_single: this.options_single,
+                answer_multiple: this.options_multiple,
+                answer_judge: this.options_judge,
+                answer_fill: this.options_fill,
+                analysis: this.analysis
+            })
+            uni.navigateBack()
         }
-        
     }
 }

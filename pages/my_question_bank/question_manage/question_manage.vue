@@ -24,11 +24,16 @@
 		<view class="content-wrap">
 			<tn-empty v-if="questions.length === 0" mode="list" style="margin-top: 100rpx;"></tn-empty>
 			<view v-else class="question-list">
-				<view v-for="(item, index) in questions" :key="item.id" class="question-item">
+				<view
+					v-for="(item, index) in questions"
+					:key="item.id"
+					@click="modeSelectClickQuestion(index)"
+					class="question-item"
+					:class="{ selected: item.isSelect }">
 					<!-- 题目类型 -->
 					<view class="question-info-wrap">
 						<view class="question-type">{{ item.type | questionTypeFilter }}</view>
-						<view class="icons-wrap">
+						<view v-if="mode !== 'select'" class="icons-wrap">
 							<text class="tn-icon-edit" @click="editQuestion(item)"></text>
 							<text class="tn-icon-delete" @click="deleteQuestion(item)"></text>
 						</view>
@@ -56,10 +61,18 @@
 			</view>
 		</view>
 
-		<view class="bottom-wrap">
+		<!-- 添加题目 -->
+		<view v-if="mode !== 'select'" class="bottom-wrap">
 			<view class="btn-wrap">
 				<!-- <tn-button width="320rpx" height="80rpx" :fontSize="32">批量整理</tn-button> -->
 				<tn-button @click="showMore" width="500rpx" height="80rpx" :fontSize="32" backgroundColor="#5fa3fb" fontColor="#FFF">添加题目</tn-button>
+			</view>
+		</view>
+		<!-- 添加到答题 -->
+		<view v-else class="bottom-select-wrap">
+			<view class="btn-wrap">
+				<tn-checkbox v-model="mode_select_data.isSelectAll" :size="40" @change="modeSelectCheck">全选</tn-checkbox>
+				<tn-button @click="modeSelectAdd" width="500rpx" height="80rpx" :fontSize="32" backgroundColor="#5fa3fb" fontColor="#FFF">添加到答题 ({{ modeSelectCount }})</tn-button>
 			</view>
 		</view>
 

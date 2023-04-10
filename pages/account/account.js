@@ -27,6 +27,25 @@ export default {
 			uni.navigateTo({
 				url: '/pages/my_question_bank/my_question_bank'
 			})
+		},
+		logout() {
+			uni.showModal({
+				title: '提示',
+				content: '确定退出登录吗？',
+				success: (res) => {
+					if (res.confirm) {
+						uni.removeStorageSync('token')
+						uni.removeStorageSync('user')
+						this.$store.commit('setUsername', '')
+						this.$store.commit('setAvatar', '')
+					}
+				}
+			})
+		},
+		toProfile() {
+			uni.navigateTo({
+				url: '/pages/profile/profile'
+			})
 		}
 	}
 }

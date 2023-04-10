@@ -196,6 +196,10 @@ export default {
 		}
 	},
 	methods: {
-
+		toCreateQuiz() {
+			uni.navigateTo({
+				url: '/pages/quiz/create/create'
+			})
+		}
 	}
 }

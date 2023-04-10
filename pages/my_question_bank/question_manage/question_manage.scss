@@ -82,6 +82,10 @@ page {
             padding: 25rpx 30rpx;
             border-radius: 16rpx;
 
+            &.selected {
+                background-color: #f1e7c1;
+            }
+
             .question-info-wrap {
                 display: flex;
                 justify-content: space-between;
@@ -152,5 +156,20 @@ page {
         width: 100%;
         display: flex;
         justify-content: space-evenly;
+    }
+}
+
+.bottom-select-wrap {
+    position: fixed;
+    bottom: 0rpx;
+    padding: 30rpx;
+    height: 150rpx;
+    width: 100%;
+    background-color: #FFF;
+    
+    .btn-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 }

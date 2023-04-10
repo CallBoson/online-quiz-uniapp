@@ -65,7 +65,7 @@
 								<view class="prefix-index">{{ String.fromCharCode(65) }}.</view>
 								正确
 							</view>
-							<radio value="1" :checked="options_judge.answer" />
+							<radio value="1" :checked="!!options_judge.answer" />
 						</view>
 						<!-- 错误 -->
 						<view class="list-item">
