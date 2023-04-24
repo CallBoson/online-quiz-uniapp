@@ -1,0 +1,53 @@
+page {
+    background-color: #fff;
+}
+
+.add-wrap {
+    position: fixed;
+    right: 30rpx;
+    bottom: 150rpx;
+    font-size: 100rpx;
+    color: #568bffa9;
+}
+
+.create-wrap, .join-wrap {
+    background-color: #FFF;
+    padding: 50rpx;
+    border-radius: 20rpx;
+    
+    button {
+        margin-top: 30rpx;
+    }
+}
+
+.group-list {
+    .group-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding: 30rpx;
+
+        .avatar {
+            width: 100rpx;
+            height: 100rpx;
+            border-radius: 50%;
+            margin-right: 30rpx;
+            background-color: #ccc;
+        }
+
+        .info {
+            flex: 1;
+
+            .title {
+                font-size: 32rpx;
+                color: #333;
+                margin-bottom: 20rpx;
+            }
+
+            .desc {
+                font-size: 28rpx;
+                color: #999;
+            }
+        }
+    }
+}

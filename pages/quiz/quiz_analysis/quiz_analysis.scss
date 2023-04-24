@@ -1,0 +1,114 @@
+page {
+	background-color: #F5F5F5;
+    padding-bottom: 150rpx;
+}
+
+.questions-wrap {
+    background-color: #FFF;
+    padding: 30rpx;
+
+    .wrap-title {
+        font-size: 32rpx;
+        font-weight: bold;
+        color: #333333;
+        padding-bottom: 30rpx;
+        border-bottom: 1rpx solid #E5E5E5;
+    }
+
+    .question-list {
+        .question-item {
+            border-bottom: 1rpx solid #E5E5E5;
+            padding: 30rpx 0;
+        }
+
+        .title-wrap {
+            font-size: 30rpx;
+            color: #222;
+        }
+
+        .score {
+            font-size: 30rpx;
+            color: #999;
+            padding-top: 5rpx;
+        }
+
+        .options-wrap {
+            .option-item {
+                display: flex;
+                align-items: center;
+                font-size: 30rpx;
+                margin: 20rpx 0;
+
+                .option-title {
+                    margin-right: 20rpx;
+                }
+
+                &.correct {
+                    color: #00B26A;
+                }
+            }
+        }
+
+        .answer-wrap {
+            .answer-title {
+                font-size: 30rpx;
+                color: #999;
+                margin-top: 20rpx;
+            }
+
+            .my-answer {
+                padding: 10rpx 0;
+            }
+
+            .correct-answer {
+                color: #00B26A;
+            }
+
+            .correct {
+                color: #00B26A;
+            }
+
+            .wrong {
+                color: #f95e5e;
+            }
+        }
+
+        .analysis-wrap {
+            .analysis-title {
+                font-size: 30rpx;
+                color: #999;
+                margin-top: 20rpx;
+            }
+
+            .analysis {
+                font-size: 30rpx;
+                color: #222;
+                padding: 10rpx 0;
+            }
+        }
+
+        .ai-wrap {
+            .ai-title {
+                font-size: 30rpx;
+                color: #999;
+                margin-top: 20rpx;
+
+                .tag {
+                    display: inline-block;
+                    font-size: 24rpx;
+                    color: #FFF;
+                    background-color: #00B26A;
+                    padding: 5rpx 10rpx;
+                    border-radius: 5rpx;
+                    margin-right: 10rpx;
+                }
+            }
+
+            .reson {
+                font-size: 30rpx;
+                color: #222;
+                padding: 10rpx 0;
+            }
+        }
+    }
+}

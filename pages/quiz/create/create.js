@@ -93,6 +93,10 @@ export default {
                 url: '/pages/my_question_bank/create_question/create_question?mode=manual'
             })
         },
+        // 删除题目
+        deleteQuestion(index) {
+            this.questionList.splice(index, 1)
+        },
         // 创建答题
         save() {
             const questionList = this.questionList.map(item => {
@@ -114,6 +118,17 @@ export default {
                 date_range: this.settings.is_date_range ? [this.settings.date_range.start, this.settings.date_range.end] : null,
                 countdown_minutes: this.settings.is_countdown ? this.settings.countdown_minutes : null,
                 is_random_options: this.settings.is_random_options,
+            }).then(() => {
+                uni.showToast({
+                    title: '创建成功',
+                    icon: 'success',
+                    duration: 2000,
+                    success: () => {
+                        setTimeout(() => {
+                            uni.navigateBack()
+                        }, 2000)
+                    }
+                })
             })
         },
         // 获取题目选项

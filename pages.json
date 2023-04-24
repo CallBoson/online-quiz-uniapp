@@ -101,6 +101,60 @@
             }
             
         }
+        ,{
+            "path" : "pages/quiz/my_quiz/my_quiz",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的答题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/quiz/quiz_detail/quiz_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "答题详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/quiz/do_quiz/do_quiz",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "答题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/quiz/quiz_result/quiz_result",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "答题结果",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/quiz/quiz_analysis/quiz_analysis",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "答案与解析",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/group/detail/detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "团队详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "default",

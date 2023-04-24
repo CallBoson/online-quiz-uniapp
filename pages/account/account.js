@@ -28,6 +28,11 @@ export default {
 				url: '/pages/my_question_bank/my_question_bank'
 			})
 		},
+		toMyQuiz() {
+			uni.navigateTo({
+				url: '/pages/quiz/my_quiz/my_quiz'
+			})
+		},
 		logout() {
 			uni.showModal({
 				title: '提示',

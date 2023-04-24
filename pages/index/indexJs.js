@@ -9,37 +9,37 @@ export default {
 	data() {
 		return {
 			banner: [{
-				image: 'https://tnuiimage.tnkjapp.com/swiper/tnbanner1.jpg'
+				image: ''
 			}, {
-				image: 'https://tnuiimage.tnkjapp.com/swiper/tnbanner2.jpg'
+				image: ''
 			}, {
-				image: 'https://tnuiimage.tnkjapp.com/swiper/tnbanner3.jpg'
+				image: ''
 			}, {
-				image: 'https://tnuiimage.tnkjapp.com/swiper/tnbanner4.jpg'
+				image: ''
 			}],
 			tuniaoData: [{
 					title: '职位推荐',
 					icon: 'praise',
 					color: 'purplered',
-					value: '32'
+					value: ''
 				},
 				{
 					title: '课程专区',
 					icon: 'discover',
 					color: 'green',
-					value: '65'
+					value: ''
 				},
 				{
 					title: '精选专题',
 					icon: 'topics',
 					color: 'orange',
-					value: '26'
+					value: ''
 				},
 				{
 					title: '在线简历',
 					icon: 'honor',
 					color: 'indigo',
-					value: '6'
+					value: ''
 				}
 			],
 			icons: [{
@@ -193,12 +193,25 @@ export default {
 
 
 			],
+			hot_list: [],
 		}
+	},
+	mounted() {
+		this.getHotList()
 	},
 	methods: {
 		toCreateQuiz() {
 			uni.navigateTo({
 				url: '/pages/quiz/create/create'
+			})
+		},
+		// 获取热门列表
+		getHotList() {
+			uni.post('/quiz/hot', {
+				page: 1,
+				pageSize: 999
+			}).then(res => {
+				this.hot_list = res.data
 			})
 		}
 	}

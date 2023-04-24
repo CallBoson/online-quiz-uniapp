@@ -156,3 +156,27 @@
   color: #FFF;
   margin: 20rpx 30rpx;
 }
+
+.hot-test-wrap {
+  .test-item {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx solid #f2f2f2;
+
+    .info-wrap {
+      flex-grow: 1;
+
+      .title {
+        font-size: 32rpx;
+        color: #333;
+        margin-bottom: 30rpx;
+      }
+
+      .desc {
+        font-size: 24rpx;
+        color: #999;
+      }
+    }
+  }
+}

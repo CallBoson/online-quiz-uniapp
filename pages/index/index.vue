@@ -30,42 +30,14 @@
       <button @click="toCreateQuiz">创建答题</button>
     </view>
     
-    <!-- 数据信息 -->
-    <view class="tn-info__container tn-flex tn-flex-wrap tn-flex-col-center tn-flex-row-between tn-margin">
-      <block v-for="(item, index) in tuniaoData" :key="index">
-        <view class="tn-info__item tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-between job-shadow">
-          <view class="tn-info__item__left tn-flex tn-flex-direction-row tn-flex-col-center tn-flex-row-left">
-            <view class="tn-info__item__left--icon tn-flex tn-flex-col-center tn-flex-row-center tn-color-white" :class="[`tn-bg-${item.color}`]">
-              <view :class="[`tn-icon-${item.icon}`]"></view>
-            </view>
-            <view class="tn-info__item__left__content">
-              <view class="tn-info__item__left__content--title">{{ item.title }}</view>
-              <view class="tn-info__item__left__content--data tn-padding-top-xs">{{ item.value }}</view>
-            </view>
-          </view>
-          <view class="tn-info__item__right">
-            <view class="tn-info__item__right--icon">
-              <view class="tn-icon-right"></view>
-            </view>
-          </view>
+    <view class="hot-test-wrap">
+      <view class="test-item" v-for="item in hot_list" :key="item.id">
+        <view class="info-wrap">
+          <view class="title">{{item.title}}</view>
+          <view class="desc">已答题{{item.record_count}}次</view>
         </view>
-      </block>
-    </view>
-    
-    <!-- 方式16 start-->
-    <view class="tn-flex tn-flex-wrap tn-margin job-shadow">
-      <block v-for="(item, index) in icons" :key="index">
-        <view class=" " style="width: 25%;">
-          <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center  tn-padding-xl">
-            <view class="icon16__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
-              <view class="tn-cool-color-icon16" :class="[$tn.color.getRandomCoolBgClass(index) + ' tn-icon-' + item.icon]"></view>
-            </view>  
-            <view class="tn-color-black tn-text-lg tn-text-center">
-              <text class="tn-text-ellipsis">{{item.title}}</text>
-            </view>
-          </view>
-        </view>
-      </block>
+        <cover :title="item.title" :src="item.cover" width="270rpx"></cover>
+      </view>
     </view>
     
   </view>

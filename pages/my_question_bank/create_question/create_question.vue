@@ -13,7 +13,7 @@
 				<textarea cols="30" rows="10" placeholder="点击输入题目内容" :value="question.content" @input="input_question"></textarea>
 			</view>
 		</view>
-		<view v-if="currentQuestionType !== 5" class="card options-wrap">
+		<view class="card options-wrap">
 			<!-- 单选题 -->
 			<block v-if="currentQuestionType === 1">
 				<view class="title">选项</view>
@@ -105,10 +105,15 @@
 					插入一个填空项
 				</view>
 			</block>
+			<!-- 简答题 -->
+			<view v-else class="short-tip">
+				<view class="tag">beta</view>
+				简答题目前仅支持AI评分
+			</view>
 		</view>
 		<view class="card analysis-wrap">
 			<view class="title">解析</view>
-			<textarea cols="30" rows="10" placeholder="点击输入答案解析内容" :value="analysis.content" @input="input_analysis"></textarea>
+			<textarea placeholder="点击输入答案解析内容" maxlength="1000" :value="analysis.content" @input="input_analysis"></textarea>
 		</view>
 		<button class="save-btn" @click="save">保存</button>
 	</view>

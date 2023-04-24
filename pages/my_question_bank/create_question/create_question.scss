@@ -177,6 +177,20 @@ page {
             margin-right: 20rpx;
         }
     }
+
+    .short-tip {
+        display: flex;
+        align-items: center;
+
+        .tag {
+            margin-right: 10rpx;
+            background-color: #5fa3fb;
+            color: #fff;
+            padding: 5rpx 10rpx;
+            border-radius: 10rpx;
+            font-size: 26rpx;
+        }
+    }
 }
 
 .analysis-wrap {

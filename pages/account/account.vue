@@ -33,7 +33,7 @@
       
       <!-- 消息&数据 -->
       <view class="tn-shadow-warp" style="margin-top: 100rpx;background-color: rgba(255,255,255,1);">
-        <view class="tn-flex">
+        <!-- <view class="tn-flex">
           <view class="tn-flex-1 tn-padding-sm tn-margin-xs">
             <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
               <view class="">
@@ -67,22 +67,22 @@
               </view>
             </view>
           </view>
-        </view>
+        </view> -->
       </view> 
       
       
       <!-- 更多信息-->
       <view class="about-shadow tn-margin-top-xl tn-padding-top-sm tn-padding-bottom-sm tn-margin-left tn-margin-right">
-        <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+        <tn-list-cell @click="toMyQuestionBank" :hover="true" :unlined="true" :radius="true" :fontSize="30">
           <view class="tn-flex tn-flex-col-center">
             <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-5 tn-color-white" > 
               <view class="tn-icon-logo-tuniao"></view>
             </view>
-            <view class="tn-margin-left-sm tn-flex-1" @click="toMyQuestionBank">我的题库</view>
+            <view class="tn-margin-left-sm tn-flex-1">我的题库</view>
             <view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
           </view>
         </tn-list-cell>
-        <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+        <tn-list-cell @click="toMyQuiz" :hover="true" :unlined="true" :radius="true" :fontSize="30">
           <view class="tn-flex tn-flex-col-center">
             <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-1 tn-color-white"> 
               <view class="tn-icon-like-fill"></view>
