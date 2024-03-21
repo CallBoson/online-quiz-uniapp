@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
 
   upload.single("file")(req, res, async function (err) {
     if (err) {
-      return res.error("文件大小不能超过512KB");
+      console.error(err);
     }
 
     const file = req.file;
