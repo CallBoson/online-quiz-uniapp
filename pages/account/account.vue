@@ -1,5 +1,5 @@
 <template>
-  <view class="template-about tn-safe-area-inset-bottom">
+  <view class="container template-about tn-safe-area-inset-bottom">
     <view class="top-backgroup">
       <image
         src="https://tnuiimage.tnkjapp.com/swiper/summer.jpg"

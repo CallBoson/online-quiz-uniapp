@@ -1,20 +1,20 @@
-page {
-    padding: 30rpx;
-    padding-top: 0;
+.container {
+  padding: 30rpx;
+  padding-top: 0;
 }
 
 .quiz-list {
-    padding-top: 30rpx;
-    .quiz-item {
-        margin-bottom: 20rpx;
-        display: flex;
+  padding-top: 30rpx;
+  .quiz-item {
+    margin-bottom: 20rpx;
+    display: flex;
 
-        .info-wrap {
-            margin-left: 20rpx;
+    .info-wrap {
+      margin-left: 20rpx;
 
-            .quiz-title {
-                font-size: 30rpx;
-            }
-        }
+      .quiz-title {
+        font-size: 30rpx;
+      }
     }
+  }
 }
