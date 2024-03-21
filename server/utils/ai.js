@@ -11,8 +11,7 @@ const requestAI = async (prompt) => {
     {
       headers: {
         "content-type": "application/json",
-        authorization:
-          "Bearer sk-ruxFyWelWpgkIp5E1624C6E639394fB5Be1610F8F4F751Bf",
+        authorization: "Bearer " + process.env.CHATGPT_API_KEY,
       },
     }
   );
