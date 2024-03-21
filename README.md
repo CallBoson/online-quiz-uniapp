@@ -95,7 +95,7 @@ node -v
   - `MYSQL_USER` 数据库用户名，如：`root`
   - `MYSQL_PASSWORD` 数据库密码
 
-- `阿里云OSS对象存储`配置（不填则无法上传图片）：
+- `阿里云OSS对象存储`配置（不填则无法上传图片，暂时只是封面用到上传，影响不大）：
   - `ACCESS_TOKEN_SECRET`
   - `OSS_REGION`
   - `OSS_ACCESS_KEY_ID`
@@ -111,7 +111,7 @@ node -v
 ## 运行
 
 - **前端**：打开`Hbuilder X`，`运行->运行到小程序模拟器`
-- **后端**：进入`/server`，终端运行`node index`，看到`数据库连接成功`即可，默认端口为 `3000`
+- **后端**：进入`/server`，终端运行`npm run start`，看到`数据库连接成功`即可，默认端口为 `3000`
 - **数据库**：需要运行`mysql`
 
 ## 部署

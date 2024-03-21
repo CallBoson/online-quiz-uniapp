@@ -23,14 +23,24 @@ const upload = multer({
   limits: { fileSize: 1024 * 512 },
 });
 
-const client = new OSS({
-  region: process.env.OSS_REGION,
-  accessKeyId: process.env.OSS_ACCESS_KEY_ID,
-  accessKeySecret: process.env.OSS_ACCESS_KEY_SECRET,
-  bucket: process.env.OSS_BUCKET,
-});
+let client;
+
+try {
+  client = new OSS({
+    region: process.env.OSS_REGION,
+    accessKeyId: process.env.OSS_ACCESS_KEY_ID,
+    accessKeySecret: process.env.OSS_ACCESS_KEY_SECRET,
+    bucket: process.env.OSS_BUCKET,
+  });
+} catch (e) {
+  console.error("OSS配置错误", e);
+}
 
 router.post("/", async (req, res) => {
+  if (!client) {
+    return res.error("OSS配置错误");
+  }
+
   upload.single("file")(req, res, async function (err) {
     if (err) {
       return res.error("文件大小不能超过512KB");
