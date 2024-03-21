@@ -2,16 +2,16 @@ const axios = require("axios");
 
 const requestAI = async (prompt) => {
   return axios.post(
-    new URL("/v1/chat/completions", process.env.CHATGPT_HOST).toString(),
+    "https://api.moonshot.cn/v1/chat/completions",
     {
-      model: "gpt-3.5-turbo",
+      model: "moonshot-v1-8k",
       messages: [{ role: "user", content: prompt }],
-      temperature: 0,
+      temperature: 0.3,
     },
     {
       headers: {
         "content-type": "application/json",
-        authorization: "Bearer " + process.env.CHATGPT_API_KEY,
+        authorization: "Bearer " + process.env.MOONSHOT_API_KEY,
       },
     }
   );

@@ -104,9 +104,8 @@ node -v
 
 详细字段请自行上阿里云 OSS 对象存储查阅
 
-- `OPENAI`配置（AI 简答题打分，无需 AI 打分可不填）
-  - `CHATGPT_HOST`：chatgpt 请求地址，如：`https://chat.openai.com`，也可填写转发地址
-  - `CHATGPT_API_KEY` APIKEY，`sk-xxxxxxxx`
+- `MOONSHOT`配置（AI 简答题打分）
+  - `MOONSHOT_API_KEY` APIKEY，(https://platform.moonshot.cn/console/api-keys 可获取免费额度)
 
 ## 运行
 
@@ -116,7 +115,7 @@ node -v
 
 ## 部署
 
-前端通过`Hbuilder X`发布小程序，后端将`/server`拷贝到服务器运行 `node index`，数据库将 `sql.sql` 导入到服务器 mysql，然后清空数据。
+前端通过`Hbuilder X`发布小程序，后端将`/server`拷贝到服务器运行 `npm run start`，数据库将 `sql.sql` 导入到服务器 mysql，然后清空数据。
 
 ## License
 
