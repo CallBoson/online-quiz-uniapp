@@ -20,7 +20,7 @@ const upload = multer({
       cb(null, changedName);
     },
   }),
-  limits: { fileSize: 1024 * 512 },
+  limits: { fileSize: 1024 * 1024 * 512 },
 });
 
 let client;
@@ -44,6 +44,7 @@ router.post("/", async (req, res) => {
   upload.single("file")(req, res, async function (err) {
     if (err) {
       console.error(err);
+      return res.error("上传失败");
     }
 
     const file = req.file;
