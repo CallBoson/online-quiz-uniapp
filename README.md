@@ -94,9 +94,11 @@ node -v
   - `MYSQL_PORT` 数据库端口，如：`3306`
   - `MYSQL_USER` 数据库用户名，如：`root`
   - `MYSQL_PASSWORD` 数据库密码
+ 
+- 前端 JWT 鉴权密钥（随意设置，默认也可以，但是不能为空）：
+  - `ACCESS_TOKEN_SECRET`
 
 - `阿里云OSS对象存储`配置（不填则无法上传图片，暂时只是封面用到上传，影响不大）：
-  - `ACCESS_TOKEN_SECRET`
   - `OSS_REGION`
   - `OSS_ACCESS_KEY_ID`
   - `OSS_ACCESS_KEY_SECRET`
